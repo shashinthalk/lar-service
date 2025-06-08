@@ -24,7 +24,7 @@ A modern web service built with Laravel 12, providing a robust API backend infra
 
 1. Clone the repository:
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/shashinthalk/lar-service
 cd webservice
 ```
 
