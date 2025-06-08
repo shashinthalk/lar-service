@@ -12,4 +12,4 @@ Route::get('/', function () {
         'environment' => config('app.env'),
         'php_version' => PHP_VERSION
     ]);
-}); 
+});
