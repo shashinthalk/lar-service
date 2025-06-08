@@ -1,0 +1,31 @@
+name: "PHP PSR-2 Code Style Check"
+
+on:
+  push:
+    paths:
+      - '**.php'
+  pull_request:
+    paths:
+      - '**.php'
+
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, xml
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Install PHP_CodeSniffer
+        run: composer require --dev squizlabs/php_codesniffer
+
+      - name: Run PHP_CodeSniffer (PSR-2)
+        run: vendor/bin/phpcs --standard=PSR2 app/ routes/ database/ config/
